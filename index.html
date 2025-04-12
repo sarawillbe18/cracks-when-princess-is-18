@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cracks When Princess is 18</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffe6f0, #fff1f7);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #ff66b2;
+      margin-bottom: 1rem;
+    }
+    .egg-container {
+      position: relative;
+      display: inline-block;
+      margin-top: 50px;
+    }
+    #egg {
+      width: 200px;
+      transition: transform 1s ease;
+      cursor: pointer;
+    }
+    #egg.cracked {
+      transform: scale(1.1) rotate(15deg);
+      filter: grayscale(1);
+    }
+    .message-box {
+      display: none;
+      margin-top: 2rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+    }
+    .countdown {
+      font-size: 1.2rem;
+      color: #cc3399;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Magical Time Capsule 💖</h1>
+  <div class="countdown" id="countdown"></div>
+
+  <div class="egg-container">
+    <img id="egg" src="egg.png" alt="Magic Egg" onclick="crackEgg()" />
+  </div>
+
+  <div class="message-box" id="messageBox">
+    <p>✨ Happy 18th Birthday, Princess! ✨</p>
+    <p>[Leave space for your messages here]</p>
+  </div>
+
+  <script>
+    const unlockDate = new Date("2025-05-06T00:00:00");
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date();
+      const timeLeft = unlockDate - now;
+      if (timeLeft <= 0) {
+        countdownEl.textContent = "🎉 It's time!";
+      } else {
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
+        countdownEl.textContent = `⏳ Cracks open in ${days}d ${hours}h ${minutes}m`;
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function crackEgg() {
+      const now = new Date();
+      if (now >= unlockDate) {
+        document.getElementById("egg").classList.add("cracked");
+        document.getElementById("messageBox").style.display = "block";
+      } else {
+        alert("Too early! Wait until May 6th 🎀");
+      }
+    }
+  </script>
+</body>
+</html>
