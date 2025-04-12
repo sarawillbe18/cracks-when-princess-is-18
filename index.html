@@ -103,10 +103,53 @@
       if (now >= unlockDate) {
         document.getElementById("egg").classList.add("cracked");
         document.getElementById("messageBox").style.display = "block";
+        confetti();
       } else {
         alert("Too early! Come back on April 12th 💖");
       }
     }
   </script>
+    <style>
+  .heart {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    border-radius: 50%;
+    animation: floatUp 6s ease-in infinite;
+    opacity: 0.8;
+    z-index: 9999;
+  }
+
+  @keyframes floatUp {
+    0% {transform: translateY(0) scale(1);}
+    100% {transform: translateY(-100vh) scale(1.5);}
+  }
+</style>
+
+<script>
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+
+  setInterval(createHeart, 500);
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
+  <!-- Cute Surprise Letter -->
+<button onclick="document.getElementById('letter').style.display='block'" style="margin-top:20px; padding:10px 20px; border:none; background:#ffb6c1; border-radius:10px; font-weight:bold;">Open a letter</button>
+
+<div id="letter" style="display:none; background:#fff0f5; padding:15px; margin-top:10px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); max-width:600px; text-align:left;">
+  <p>Dear Princess,</p>
+  <p>18 years of awesomness and being the most iconic person I know. This world is so lucky to have you — and I’m luckier.</p>
+  <p>Keep being a queen, keep chasing your dreams, and never stop updating me.</p>
+  <p>Love alway,</p>
+  <p>farha</p>
+</div>
+  
+
 </html>
